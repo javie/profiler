@@ -1,0 +1,20 @@
+{
+    "author": "Mior Muhammad Zaki",
+    "name": "javie-profiler",
+    "description": "Client-side and Node.js Profiler Helper",
+    "version": "0.1.0",
+    "private": false,
+    "main": "profiler.js",
+    "engines": {
+        "node": ">=0.4"
+    },
+    "dependencies"   : {
+        "underscore" : "1.3.3"
+    },
+    "devDependencies": {
+        "mocha"      : ">= 0.14.1"
+    },
+    "scripts": {
+        "test": "mocha tests/profiler.test.js -R spec"
+    }
+}
