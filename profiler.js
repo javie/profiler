@@ -34,7 +34,7 @@
 	}
 	else {
 		// Register Javie namespace if it's not available yet. 
-		if ('undefined' === root.Javie) {
+		if ('undefined' === typeof root.Javie) {
 			root.Javie = {};
 		}
 

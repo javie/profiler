@@ -10,14 +10,14 @@ Client-side and Node.js Profiler Helper
 Profile your application the easy way, the functionality is wrapped around V8 or Firebug `console` and default to disabled unless required to run. This allow the code to sit nicely between DEVELOPMENT and PRODUCTION environment.
 
     // Enable the Profiler
-	Profiler.enable();
+	Javie.Profiler.enable();
 
 	// Disable the Profiler
-	Profiler.disable(); 
+	Javie.Profiler.disable(); 
 
 Let start with a simple profiling. 
 
-	var p = Profiler.make();
+	var p = Javie.Profiler.make();
 	
 	// start a time log
 	p.time('benchmark.a', 'Some description');
@@ -31,7 +31,7 @@ Let start with a simple profiling.
      * In addition you can also ignore start time and based the timestamp 
 	 * to the first instance loaded time
 	 */
-	p.timeEnd('benchmark.b', 'Compared to Profiler.make()');
+	p.timeEnd('benchmark.b', 'Compared to Javie.Profiler.make()');
 
 Trace function call up to now.
 
