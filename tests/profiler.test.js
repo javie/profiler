@@ -10,7 +10,6 @@ describe('Javie.Events', function () {
 		if (Profiler.status() === true) {
 			done();
 		}
-
 	});
 
 	it('should return status false when Profiler is disabled', function (done) {
@@ -19,6 +18,5 @@ describe('Javie.Events', function () {
 		if (Profiler.status() === false) {
 			done();
 		}
-
 	});
 });
