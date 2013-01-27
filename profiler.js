@@ -14,10 +14,10 @@
 	var root, Profiler, _, caches;
 
 	// Save a reference to the global object (`window` in the browser, `global` on the server)
-	root     = this;
+	root = this;
 
 	// store collection of Profiler instances, if any.
-	caches   = {};
+	caches = {};
 
 	// Create a safe reference to the Profiler object for use below.
 	Profiler = function (name) {
