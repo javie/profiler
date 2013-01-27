@@ -20,7 +20,9 @@
 	caches   = {};
 
 	// Create a safe reference to the Profiler object for use below.
-	Profiler = {};
+	Profiler = function (name) {
+		return this.make(name);
+	};
 
 	// Export the object for **Node.js**, with
 	// backwards-compatibility for the old `require()` API. If we're in
