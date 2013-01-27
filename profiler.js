@@ -21,7 +21,7 @@
 
 	// Create a safe reference to the Profiler object for use below.
 	Profiler = function (name) {
-		return this.make(name);
+		return Profiler.make(name);
 	};
 
 	// Export the object for **Node.js**, with
