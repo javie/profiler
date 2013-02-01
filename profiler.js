@@ -108,7 +108,7 @@
 	* @return {Profiler}
 	*/
 	Profiler.make = function make (name) {
-		var util, self, cache;
+		var self, cache;
 
 		if (console === undefined && this.enabled === true) {
 			throw new Error("console is not available.");
@@ -208,7 +208,7 @@
 					log       = schema();
 					log.start = this.startedAt;
 
-					if (util.isSet(message)) {
+					if ( ! _.isUndefined(message)) {
 						log.message = message;
 					}
 
