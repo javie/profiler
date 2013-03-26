@@ -4,7 +4,8 @@
  *
  * @package     Javie
  * @require     underscore, console
- * @since       0.1
+ * @version     1.0.0
+ * @since       0.1.0
  * @author      Mior Muhammad Zaki <https://github.com/crynobone>
  * @license     MIT License
  */

@@ -2,7 +2,7 @@
     "author": "Mior Muhammad Zaki",
     "name": "javie-profiler",
     "description": "Client-side and Node.js Profiler Helper",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": false,
     "main": "profiler.js",
     "engines": {
