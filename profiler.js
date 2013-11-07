@@ -10,8 +10,7 @@
  * @license     MIT License
  */
 
-(function (console) { 'use strict';
-
+(function(console) { 'use strict';
 	var root, Profiler, _, caches;
 
 	// Save a reference to the global object (`window` in the browser, `global` on the server)
@@ -21,7 +20,7 @@
 	caches = {};
 
 	// Create a safe reference to the Profiler object for use below.
-	Profiler = function (name) {
+	Profiler = function(name) {
 		return Profiler.make(name);
 	};
 
@@ -37,14 +36,14 @@
 		exports.Profiler = Profiler;
 	}
 	else {
-		// Register Javie namespace if it's not available yet. 
+		// Register Javie namespace if it's not available yet.
 		if ('undefined' === typeof root.Javie) {
 			root.Javie = {};
 		}
 
 		root.Javie.Profiler = Profiler;
 	}
-	
+
 	// load all dependencies
 	_ = root._;
 
@@ -76,7 +75,7 @@
 	 * @param  {Boolean}   asFloat
 	 * @return {mixed}
 	 */
-	function microtime (asFloat) {
+	function microtime(asFloat) {
 		var ms, sec;
 
 		ms  = new Date().getTime();
@@ -89,17 +88,17 @@
 	Profiler.enabled = false;
 
 	// Enable Profiler to run in this environment
-	Profiler.enable  = function enable () {
+	Profiler.enable  = function enable() {
 		this.enabled = true;
 	};
 
 	// Disable Profiler to run in this environment
-	Profiler.disable = function disable () {
+	Profiler.disable = function disable() {
 		this.enabled = false;
 	};
 
 	// Get Profiler enabled status
-	Profiler.status = function status () {
+	Profiler.status = function status() {
 		return this.enabled;
 	};
 
@@ -108,7 +107,7 @@
 	*
 	* @return {Profiler}
 	*/
-	Profiler.make = function make (name) {
+	Profiler.make = function make(name) {
 		var self, cache;
 
 		if (console === undefined && this.enabled === true) {
@@ -131,33 +130,33 @@
 		cache = {
 			/**
 			 * List of logs
-			 * 
+			 *
 			 * @type {Array}
 			 */
 			logs: [],
 
 			/**
 			 * list of pair id to key
-			 * 
+			 *
 			 * @type {Object}
 			 */
 			pair: {},
 
 			/**
 			 * mark initial starting microtime
-			 * 
+			 *
 			 * @type {[type]}
 			 */
 			startedAt: microtime(true),
 
 			/**
 			 * Mark start time and return the given ID
-			 * 
-			 * @param  {String}     id
-			 * @param  {String}     message
+			 *
+			 * @param  {String} id
+			 * @param  {String} message
 			 * @return {String}
 			 */
-			time: function start (id, message) {
+			time: function start(id, message) {
 				var key, log;
 
 				if (_.isNull(id)) {
@@ -168,14 +167,15 @@
 					return null;
 				}
 
-				log         = schema();
+				log = schema();
+
 				log.id      = id;
 				log.type    = 'time';
 				log.message = message.toString();
 				log.start   = microtime(true);
 
 				if (!_.isUndefined(this.pair['time.' + id])) {
-					key            = this.pair['time.' + id];
+					key = this.pair['time.' + id];
 					this.logs[key] = log;
 				} else {
 					this.logs.push(log);
@@ -194,7 +194,7 @@
 			 * @param  {mixed}
 			 * @return {Float}
 			 */
-			timeEnd: function mark (id, message) {
+			timeEnd: function mark(id, message) {
 				var key, start, end, total, log;
 
 				if (_.isNull(id)) {
@@ -228,7 +228,7 @@
 				start = log.start;
 				total = (end - start);
 
-				log.total      = total;
+				log.total = total;
 				this.logs[key] = log;
 
 				return total;
@@ -236,10 +236,10 @@
 
 			/**
 			 * Run console.trace()
-			 * 
+			 *
 			 * @return {void}
 			 */
-			trace: function trace () {
+			trace: function trace() {
 				if (self.enabled === false) {
 					return;
 				}
@@ -255,11 +255,11 @@
 			 *    p.mark('page.load', 'Load page');
 			 *    p.output();
 			 * </code>
-			 * 
+			 *
 			 * @param  {Boolean}
 			 * @return {void}
 			 */
-			output: function output (autoEnabled) {
+			output: function output(autoEnabled) {
 				var logs, index, length, current;
 
 				if (self.enabled === false) {
@@ -291,4 +291,3 @@
 	};
 
 }).call(this, console);
-
