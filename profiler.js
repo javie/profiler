@@ -135,15 +135,15 @@
   })();
 
   ProfilerRepository = (function() {
-    function ProfilerRepository(name) {
-      return this.make(name);
+    function ProfilerRepository() {
+      return new Profiler;
     }
 
     ProfilerRepository.make = function(name) {
       if (!((name != null) || name !== '')) {
         name = 'default';
       }
-      return instances[name] != null ? instances[name] : instances[name] = new Profiler;
+      return instances[name] != null ? instances[name] : instances[name] = new ProfilerRepository();
     };
 
     ProfilerRepository.enable = function() {

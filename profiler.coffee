@@ -89,11 +89,11 @@ class Profiler
 		true
 
 class ProfilerRepository
-	constructor: (name) ->
-		return @make(name)
+	constructor: ->
+		return new Profiler
 	@make: (name) ->
 		name = 'default' unless name? or name isnt ''
-		instances[name] ?= new Profiler
+		instances[name] ?= new ProfilerRepository()
 	@enable: ->
 		enabled = true
 	@disable: ->

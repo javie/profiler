@@ -1,4 +1,4 @@
-describe('Javie.Events', function () {
+describe('Javie.Profiler', function () {
 	var Profiler, stub;
 
 	Profiler = require(__dirname+'/../profiler.js');
