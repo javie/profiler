@@ -1,9 +1,9 @@
 describe('Javie.Events', function () {
-	var Profiler, p;
+	var Profiler, stub;
 
 	Profiler = require(__dirname+'/../profiler.js');
-	p        = Profiler.make();
-	
+	stub = Profiler.make();
+
 	it('should return status true when Profiler is enabled', function (done) {
 		Profiler.enable();
 

@@ -1,10 +1,6 @@
 instances = {}
 enabled = false
 root = exports ? this
-underscore = root._
-underscore = require('underscore') unless underscore and require?
-
-throw new Error("Underscore.js is not available") unless underscore
 
 schema = (id, type, start) ->
 	id ?= ''
@@ -22,19 +18,20 @@ schema = (id, type, start) ->
 microtime = (asFloat) ->
 	ms = new Date().getTime()
 	sec = parseInt(ms / 1000, 10)
+	result = ms/1000
 
-	return ms/1000 if asFloat is yes
+	if asFloat isnt yes then result = "#{(ms-(sec*1000))/1000} sec"
 
-	"#{(ms-(sec*1000))/1000} sec"
+	result
 
 class Profiler
 	logs: null
 	pair: null
-	startedAt: null
+	started: null
 	constructor: ->
 		@logs = []
 		@pair = {}
-		@startedAt = microtime(true)
+		@started = microtime(true)
 	time: (id, message) ->
 		id ?= @logs.length
 
@@ -45,7 +42,7 @@ class Profiler
 
 		key = @pair["time#{id}"]
 
-		unless typeof key is 'undefined'
+		if typeof key isnt 'undefined'
 			@logs[key] = log
 		else
 			@logs.push(log)
@@ -60,11 +57,11 @@ class Profiler
 
 		key = @pair["time#{id}"]
 
-		unless typeof key is 'undefined'
+		if typeof key isnt 'undefined'
 			console.timeEnd(id)
 			log = @logs[key]
 		else
-			log = schema('time', id, @startAt)
+			log = schema('time', id, @started)
 			log.message = message unless typeof message is 'undefined'
 
 			@logs.push(log)
@@ -91,7 +88,6 @@ class Profiler
 				console.log('%s: %s - %dms', log.id, log.message, sec)
 			else
 				console.log(log.id, log.message)
-
 		true
 
 class ProfilerRepository
