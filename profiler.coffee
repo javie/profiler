@@ -15,14 +15,12 @@ schema = (id, type, start) ->
 		total: null
 		message: ''
 
-microtime = (asFloat) ->
-	ms = new Date().getTime()
-	sec = parseInt(ms / 1000, 10)
-	result = ms/1000
+microtime = (seconds) ->
+	time = new Date().getTime()
+	ms   = parseInt(time / 1000, 10)
+	sec  = "#{(time-(ms*1000))/1000} sec"
 
-	if asFloat isnt yes then result = "#{(ms-(sec*1000))/1000} sec"
-
-	result
+	if seconds is yes then ms else sec
 
 class Profiler
 	logs: null

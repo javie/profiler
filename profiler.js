@@ -28,15 +28,16 @@
     };
   };
 
-  microtime = function(asFloat) {
-    var ms, result, sec;
-    ms = new Date().getTime();
-    sec = parseInt(ms / 1000, 10);
-    result = ms / 1000;
-    if (asFloat !== true) {
-      result = "" + ((ms - (sec * 1000)) / 1000) + " sec";
+  microtime = function(seconds) {
+    var ms, sec, time;
+    time = new Date().getTime();
+    ms = parseInt(time / 1000, 10);
+    sec = "" + ((time - (ms * 1000)) / 1000) + " sec";
+    if (seconds === true) {
+      return ms;
+    } else {
+      return sec;
     }
-    return result;
   };
 
   Profiler = (function() {
