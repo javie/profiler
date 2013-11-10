@@ -39,7 +39,7 @@
       if (start == null) {
         start = microtime(true);
       }
-      return schema = {
+      return {
         id: id,
         type: type,
         start: start,

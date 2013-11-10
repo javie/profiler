@@ -25,13 +25,14 @@ class Profiler
 		type ?= ''
 		start ?= microtime(true)
 
-		schema =
+		{
 			id: id
 			type: type
 			start: start
 			end: null
 			total: null
 			message: ''
+		}
 	microtime = (seconds) ->
 		time = new Date().getTime()
 		ms   = parseInt(time / 1000, 10)
