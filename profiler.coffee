@@ -1,4 +1,21 @@
-instances = {}
+###
+ * ==========================================================
+ * Javie.Profiler
+ * ==========================================================
+ *
+ * Profiler Helper for Client-side JavaScript and Node.js
+ *
+ * @package Javie
+ * @class   Profiler
+ * @require console
+ * @version 1.1.0-dev
+ * @since   0.1.0
+ * @author  Mior Muhammad Zaki <https://github.com/crynobone>
+ * @license MIT License
+ * ==========================================================
+###
+
+profilers = {}
 enabled = false
 root = exports ? this
 
@@ -90,10 +107,10 @@ class Profiler
 
 class ProfilerRepository
 	constructor: ->
-		return new Profiler
+		return ProfilerRepository.make()
 	@make: (name) ->
 		name = 'default' unless name? or name isnt ''
-		instances[name] ?= new ProfilerRepository()
+		profilers[name] ?= new Profiler
 	@enable: ->
 		enabled = true
 	@disable: ->
