@@ -19,27 +19,26 @@ profilers = {}
 enabled = false
 root = exports ? this
 
-schema = (id, type, start) ->
-	id ?= ''
-	type ?= ''
-	start ?= microtime(true)
-
-	schema =
-		id: id
-		type: type
-		start: start
-		end: null
-		total: null
-		message: ''
-
-microtime = (seconds) ->
-	time = new Date().getTime()
-	ms   = parseInt(time / 1000, 10)
-	sec  = "#{(time-(ms*1000))/1000} sec"
-
-	if seconds is yes then ms else sec
-
 class Profiler
+	schema = (id, type, start) ->
+		id ?= ''
+		type ?= ''
+		start ?= microtime(true)
+
+		schema =
+			id: id
+			type: type
+			start: start
+			end: null
+			total: null
+			message: ''
+	microtime = (seconds) ->
+		time = new Date().getTime()
+		ms   = parseInt(time / 1000, 10)
+		sec  = "#{(time-(ms*1000))/1000} sec"
+
+		if seconds is yes then ms else sec
+
 	logs: null
 	pair: null
 	started: null
