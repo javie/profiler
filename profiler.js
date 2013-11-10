@@ -153,8 +153,8 @@
   })();
 
   ProfilerRepository = (function() {
-    function ProfilerRepository() {
-      return ProfilerRepository.make();
+    function ProfilerRepository(name) {
+      return ProfilerRepository.make(name);
     }
 
     ProfilerRepository.make = function(name) {

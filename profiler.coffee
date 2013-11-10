@@ -106,8 +106,8 @@ class Profiler
 		true
 
 class ProfilerRepository
-	constructor: ->
-		return ProfilerRepository.make()
+	constructor: (name) ->
+		return ProfilerRepository.make(name)
 	@make: (name) ->
 		name = 'default' unless name? or name isnt ''
 		profilers[name] ?= new Profiler
