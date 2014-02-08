@@ -8,7 +8,7 @@
  * @package Javie
  * @class   Profiler
  * @require console
- * @version 1.1.0-dev
+ * @version 1.1.1
  * @since   0.1.0
  * @author  Mior Muhammad Zaki <https://github.com/crynobone>
  * @license MIT License
